@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Rebombori | El Rusc</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --mel: #EDBF7C;
+            --terracota: #BF6E65;
+            --live: #ff4b4b;
+            --fons: #fffcf9;
+            --text: #333333;
+            --smooth: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--fons);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 100px; /* Espai pel reproductor */
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo { font-weight: 700; color: var(--terracota); text-decoration: none; font-size: 1.5rem; }
+
+        .program-header {
+            padding: 140px 8% 60px;
+            background: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .program-art {
+            width: 280px; height: 280px;
+            border-radius: 24px;
+            background: var(--terracota);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            box-shadow: 0 15px 35px rgba(191, 110, 101, 0.2);
+        }
+
+        .program-info { flex: 1; min-width: 300px; }
+        .program-info h1 { font-size: 3rem; margin-bottom: 10px; }
+        
+        .status-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #fff0f0;
+            color: var(--live);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- EPISODES LIST --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 8%; }
+        
+        #episode-list { margin-top: 20px; }
+
+        .episode-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid #eee;
+            transition: var(--smooth);
+            cursor: pointer;
+        }
+
+        .episode-item:hover {
+            border-color: var(--mel);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .play-icon {
+            width: 50px; height: 50px;
+            background: var(--mel);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .episode-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .episode-info span { font-size: 0.85rem; color: #999; }
+
+        /* --- PLAYER BAR --- */
+        .player-fixed {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            background: #222;
+            color: white;
+            padding: 15px 8%;
+            display: none; /* S'activa al fer play */
+            align-items: center;
+            gap: 20px;
+            z-index: 2000;
+        }
+
+        audio { flex: 1; height: 35px; }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #bbb;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            background: #fdfdfd;
+        }
+
+        .loading { text-align: center; padding: 50px; color: #888; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">EL RUSC</a>
+        <a href="audiovisuals.html" style="text-decoration:none; color:var(--text); font-weight:700;"><i class="fas fa-chevron-left"></i> TORNAR</a>
+    </nav>
+
+    <header class="program-header">
+        <div class="program-art"><i class="fas fa-microphone-lines"></i></div>
+        <div class="program-info">
+            <span class="status-tag">PODCAST OFICIAL</span>
+            <h1>El Rebombori</h1>
+            <p>Escolta l'actualitat de Molins de Rei amb l'equip del Rusc. Entrevistes, humor i tot el que passa a la vila des d'una mirada jove.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Episodis recents</h2>
+        <div id="episode-list">
+            <div class="loading">Carregant el feed de Ràdio Molins...</div>
+        </div>
+    </div>
+
+    <div id="player-bar" class="player-fixed">
+        <div id="now-playing" style="font-size: 0.8rem; max-width: 200px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"></div>
+        <audio id="audio-player" controls>
+            <source src="" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 El Rusc - Associació Juvenil</p>
+    </footer>
+
+    <script>
+        const RSS_URL = 'https://www.radiomolinsderei.cat/podcasts/el-rebombori/rss';
+        // Fem servir un proxy per evitar el bloqueig CORS del navegador
+        const PROXY_URL = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
+
+        async function loadPodcasts() {
+            try {
+                const response = await fetch(PROXY_URL);
+                const data = await response.json();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+                const items = xmlDoc.querySelectorAll("item");
+                
+                const listContainer = document.getElementById('episode-list');
+                listContainer.innerHTML = '';
+
+                items.forEach(item => {
+                    const title = item.querySelector("title").textContent;
+                    const date = new Date(item.querySelector("pubDate").textContent).toLocaleDateString('ca-ES', {
+                        day: 'numeric', month: 'long', year: 'numeric'
+                    });
+                    const audioUrl = item.querySelector("enclosure").getAttribute("url");
+
+                    const div = document.createElement('div');
+                    div.className = 'episode-item';
+                    div.onclick = () => playPodcast(audioUrl, title);
+                    div.innerHTML = `
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <div class="episode-info">
+                            <h3>${title}</h3>
+                            <span>${date}</span>
+                        </div>
+                    `;
+                    listContainer.appendChild(div);
+                });
+            } catch (error) {
+                document.getElementById('episode-list').innerHTML = 'No s’ha pogut carregar el contingut. Reintenta-ho més tard.';
+                console.error(error);
+            }
+        }
+
+        function playPodcast(url, title) {
+            const playerBar = document.getElementById('player-bar');
+            const audio = document.getElementById('audio-player');
+            const info = document.getElementById('now-playing');
+
+            playerBar.style.display = 'flex';
+            audio.src = url;
+            info.innerText = title;
+            audio.play();
+        }
+
+        loadPodcasts();
+    </script>
+</body>
+</html>
