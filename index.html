@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Rusc | Creant Xarxa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES DE MARCA --- */
+        :root {
+            --mel: #EDBF7C;
+            --mel-light: #f7e3c5;
+            --terracota: #BF6E65;
+            --terracota-dark: #a15951;
+            --blanc: #ffffff;
+            --fons: #fffcf9;
+            --text: #333333;
+            --smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--fons);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓ PRO & RESPONSIVA --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--smooth);
+        }
+
+        nav.scrolled {
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--terracota);
+            text-decoration: none;
+            letter-spacing: 2px;
+            z-index: 1100;
+        }
+
+        /* Nav Desktop */
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--smooth);
+        }
+
+        .nav-links a:hover { color: var(--terracota); }
+
+        /* Icona Menú Mobile */
+        .menu-btn {
+            display: none;
+            color: var(--terracota);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+            transition: var(--smooth);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+            background: radial-gradient(circle at 70% 30%, var(--mel-light) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 70%, #fde7e4 0%, transparent 40%);
+        }
+
+        .hero-content { z-index: 10; }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            font-weight: 700;
+            color: var(--terracota);
+            line-height: 0.8;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: heroFade 1.2s forwards ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: var(--terracota-dark);
+            letter-spacing: clamp(4px, 2vw, 15px);
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-weight: 300;
+            opacity: 0;
+            animation: heroFade 1.2s forwards 0.4s ease-out;
+        }
+
+        .blob {
+            position: absolute;
+            background: var(--mel);
+            filter: blur(60px);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0.2;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 50px); }
+        }
+
+        @keyframes heroFade {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- SECCIONS RESUMIDES (GRID RESPONSIVE) --- */
+        .section-preview {
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            min-height: 70vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-preview:nth-child(even) { flex-direction: row-reverse; background-color: white; }
+
+        .preview-content { flex: 1; }
+
+        .preview-tag {
+            color: var(--mel);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .preview-content h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--terracota);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .preview-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .btn-rusc {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 32px;
+            background: var(--terracota);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 700;
+            transition: var(--smooth);
+            border: 2px solid var(--terracota);
+        }
+
+        .btn-rusc:hover {
+            background: transparent;
+            color: var(--terracota);
+            transform: translateX(10px);
+        }
+
+        /* Imatges PRO */
+        .preview-image {
+            flex: 1;
+            aspect-ratio: 16/10;
+            background: var(--fons);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--mel-light);
+            background: linear-gradient(135deg, #fffcf9 0%, #f7e3c5 100%);
+            transition: var(--smooth);
+        }
+
+        .section-preview:hover .image-placeholder { transform: scale(1.1); }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            nav { padding: 20px 5%; }
+            
+            .menu-btn { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--blanc);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; }
+
+            .nav-links a { font-size: 1.8rem; }
+
+            .section-preview, .section-preview:nth-child(even) {
+                flex-direction: column;
+                padding: 60px 5%;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .preview-image {
+                width: 100%;
+                height: 300px;
+                order: -1; /* La imatge va a sobre del text en mòbil */
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 8% 40px;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo h3 { font-size: 1.8rem; color: var(--mel); margin-bottom: 15px; }
+
+        .footer-links h4 { color: var(--terracota-light); margin-bottom: 20px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #999; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: white; }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">EL RUSC</a>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#audiovisuals">Audiovisuals</a></li>
+            <li><a href="#activitats">Activitats</a></li>
+            <li><a href="#digital">Digital</a></li>
+            <li><a href="#footer">Contacte</a></li>
+        </ul>
+
+        <div class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="blob" style="width: 40vw; height: 40vw; top: -10%; right: -10%;"></div>
+        <div class="blob" style="width: 30vw; height: 30vw; bottom: 5%; left: -5%; background: var(--terracota);"></div>
+        
+        <div class="hero-content">
+            <p>Associació Juvenil</p>
+            <h1>EL RUSC</h1>
+            <p>creant xarxa</p>
+        </div>
+    </section>
+
+    <section class="section-preview" id="audiovisuals">
+        <div class="preview-content reveal">
+            <span class="preview-tag">Veu i Creativitat</span>
+            <h2>Fem ràdio, fem comunitat.</h2>
+            <p>Descobreix la veu del jovent a través dels nostres programes. Des de la Swiftología fins al Rebombori, aquí tothom té un micro.</p>
+            <a href="#" class="btn-rusc">Escolta els programes <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="preview-image reveal">
+            <div class="image-placeholder"><i class="fas fa-microphone-alt"></i></div>
+        </div>
+    </section>
+
+    <section class="section-preview" id="activitats">
+        <div class="preview-content reveal">
+            <span class="preview-tag">Oci Conscient</span>
+            <h2>Més que simple diversió.</h2>
+            <p>Jocs, misteris i trobades. Un oci accessible i comunitari que omple de vida els carrers de la nostra vila.</p>
+            <a href="#" class="btn-rusc">Mira l'agenda <i class="fas fa-calendar-alt"></i></a>
+        </div>
+        <div class="preview-image reveal">
+            <div class="image-placeholder" style="background: linear-gradient(135deg, #fffcf9 0%, #d68d85 100%);">
+                <i class="fas fa-gamepad" style="color: white;"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-preview" id="digital">
+        <div class="preview-content reveal">
+            <span class="preview-tag">Transformació Social</span>
+            <h2>Digitalitzem valors.</h2>
+            <p>Suport tecnològic per a entitats sense ànim de lucre. Acompanyem el teixit associatiu en la seva evolució digital.</p>
+            <a href="#" class="btn-rusc">Com t'ajudem? <i class="fas fa-laptop-code"></i></a>
+        </div>
+        <div class="preview-image reveal">
+            <div class="image-placeholder"><i class="fas fa-network-wired"></i></div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h3>EL RUSC</h3>
+                <p>Un espai on les idees volen i la xarxa creix. Uneix-te a l'eixam!</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explora</h4>
+                <ul>
+                    <li><a href="#">L'Equip</a></li>
+                    <li><a href="#">Projectes</a></li>
+                    <li><a href="#">Contacte</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Xarxes</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 10px;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #333; padding-top: 30px; font-size: 0.8rem; color: #666;">
+            &copy; 2026 El Rusc. Sant Vicenç dels Horts.
+        </div>
+    </footer>
+
+    <script>
+        // --- LÒGICA MENÚ MOBILE ---
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const icon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+            // Bloqueja l'scroll quan el menú està obert
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'initial';
+        });
+
+        // Tancar menú en clicar un link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                document.body.style.overflow = 'initial';
+            });
+        });
+
+        // --- EFECTE SCROLL NAVBAR ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if(window.scrollY > 80) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // --- REVEAL ON SCROLL ---
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add("active");
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
