@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Els Misteris de la Fàbrica Ferrer i Mora | El Rusc</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --mel: #EDBF7C;
+            --terracota: #BF6E65;
+            --fons: #fffcf9;
+            --text: #333333;
+            --obscur: #2c3e50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--fons);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+        .logo { font-weight: 700; color: var(--terracota); text-decoration: none; font-size: 1.5rem; letter-spacing: 1px; }
+
+        /* --- SECCIÓ PRESENTACIÓ --- */
+        .activity-header {
+            padding: 140px 8% 40px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 15px;
+            background: #fdf5e6;
+            color: var(--terracota);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .activity-header h1 { font-size: 3rem; color: var(--text); margin-bottom: 15px; line-height: 1.2; font-weight: 700; }
+        .tagline { font-size: 1.2rem; color: #666; margin-bottom: 30px; font-weight: 500; }
+
+        /* --- GRAELLA DE 3 FOTOS (MOSAIC) --- */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .photo-item {
+            background-color: #eee;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e2e2e2;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .photo-1 { grid-row: 1 / span 2; } 
+
+        /* --- CARACTERÍSTIQUES TÈCNIQUES --- */
+        .tech-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .spec-card {
+            background: var(--fons);
+            border: 1px solid #eedec7;
+            padding: 12px 20px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .spec-card i { color: var(--terracota); font-size: 1.4rem; flex-shrink: 0; }
+        .spec-card .spec-text { display: flex; flex-direction: column; }
+        .spec-card h4 { font-size: 0.75rem; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; }
+        .spec-card p { font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 0; white-space: nowrap; }
+
+        /* --- DETALL DE VENDA I VALORS --- */
+        .activity-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 8%;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .pitch-section h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--obscur); }
+        .pitch-section p { margin-bottom: 20px; color: #555; text-align: justify; font-size: 1.05rem; }
+
+        .feature-list { margin: 30px 0; }
+        .feature-item { display: flex; gap: 15px; margin-bottom: 25px; }
+        .feature-item i { color: var(--mel); font-size: 1.2rem; margin-top: 4px; flex-shrink: 0; }
+        .feature-item h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 3px; }
+        .feature-item p { font-size: 0.95rem; color: #666; }
+
+        /* --- CAIXA DE COL·LABORACIÓ --- */
+        .cta-box {
+            background: white;
+            border: 1px solid #eee;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .cta-box h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--text); }
+        .cta-box p { font-size: 0.9rem; color: #666; margin-bottom: 20px; text-align: left; }
+
+        .btn-contact {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--terracota);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(191, 110, 101, 0.3);
+        }
+        .btn-contact:hover { background: var(--obscur); transform: translateY(-2px); }
+
+        /* --- LOGOTIPS DE SUPORT / COL·LABORACIÓ --- */
+        .support-logos {
+            max-width: 1200px;
+            margin: 40px auto 10px;
+            padding: 0 8%;
+            text-align: center;
+        }
+        .support-logos img {
+            max-width: 280px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+        .support-logos img:hover {
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: white;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .activity-content { grid-template-columns: 1fr; gap: 40px; }
+            .photo-gallery { grid-template-columns: 1fr; grid-template-rows: 250px 150px 150px; }
+            .photo-1 { grid-row: auto; }
+            .activity-header h1 { font-size: 2.2rem; }
+            .spec-card { min-width: 100%; }
+            .support-logos img { max-width: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">EL RUSC</a>
+        <a href="https://somelrusc.github.io/web/activitats" style="text-decoration:none; color:var(--text); font-weight:700;">
+            <i class="fas fa-chevron-left"></i> ACTIVITATS
+        </a>
+    </nav>
+
+    <header class="activity-header">
+        <div class="max-width-wrapper">
+            <span class="badge"><i class="fas fa-lock"></i> Escape Room</span>
+            <h1>Els Misteris de la Fàbrica Ferrer i Mora</h1>
+            <p class="tagline">Una experiència d'escape room cocreada pel teixit juvenil per dinamitzar la història i la cultura local.</p>
+            
+            <div class="photo-gallery">
+                <div class="photo-item photo-1" style="background-image: url('https://i.ibb.co/pBGZsZdG/92fcae79-877e-4206-bc7d-a57eb18490bb.jpg');"></div>
+                <div class="photo-item photo-2" style="background-image: url('https://i.ibb.co/C3PNZqdZ/d282a7ba-b913-4d24-a616-1ab682cdb080.jpg');"></div>
+                <div class="photo-item photo-3" style="background-image: url('https://i.ibb.co/3YQhqS21/a1f592d9-d6db-482f-9658-9e4ca62fa12f.jpg');"></div>
+            </div>
+
+            <div class="tech-specs">
+                <div class="spec-card">
+                    <i class="far fa-clock"></i>
+                    <div class="spec-text">
+                        <h4>Temps estimat</h4>
+                        <p>60 minuts</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-users"></i>
+                    <div class="spec-text">
+                        <h4>Equips óptims</h4>
+                        <p>2 - 8 participants</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-user-check"></i>
+                    <div class="spec-text">
+                        <h4>Edat recomanada</h4>
+                        <p>+10 en família / +16 autònom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="activity-content">
+        <section class="pitch-section">
+            <h2>L'Experiència i el seu Rerefons</h2>
+            <p>A l’edifici d'una antiga fàbrica de conserves, diu la llegenda, que s’hi amaga un tresor d’un valor incalculable pel patrimoni molinenc. Després que l’amo de la fàbrica hagués d’abandonar Molins, cap persona no ha aconseguit descobrir on s’amaga el tresor.</p>
+            <p>Aquest projecte neix de les ganes d'apropar la història de la nostra vila d'una manera totalment diferent. A través del joc cooperatiu, els participants han de desxifrar la incògnita que ha mantingut en suspens la família Ferrer i Mora, aprenent a col·laborar i coordinar-se per assolir l'objectiu comunitari.</p>
+
+            <h2 style="margin-top: 40px;">Com treballem i col·laborem?</h2>
+            <p>Com a associació juvenil, busquem cogestionar, cedir i adaptar aquesta activitat per sumar valor a projectes culturals, festes populars, programacions de joventut o jornadas d'altres entitats germanes de l'entorn.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h4>Teixit Comunitari</h4>
+                        <p>L'activitat està pensada com un punt de trobada generacional: perfecte per activar col·lectius de joves o per obrir espais de lleure saludable per a les famílies de l'entorn.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-book-open"></i>
+                    <div>
+                        <h4>Divulgació Històrica Activa</h4>
+                        <p>No és només entreteniment; reinterpretem el passat industrial de Molins de Rei per fer memòria històrica de manera lúdica, engrescadora i transformadora.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <div>
+                        <h4>Suport i Coorganització</h4>
+                        <p>Ens encarreguem del guiatge, de la dinamització de les partides i d'aportar el material necessari. Qualsevol aportació de l'intercanvi econòmic associat es reintegra totalment en el sosteniment d'activitats per als joves del territori.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="cta-box">
+            <h3>Fem-ho possible</h3>
+            <p>Vols que col·laborem portant aquest escape room al teu municipi, espai juvenil, fira o entitat?</p>
+            <p>Escriu-nos i busquem la manera d'adaptar l'activitat, quadrar calendaris i col·laborar mútuament.</p>
+            
+            <a href="mailto:somelrusc@gmail.com?subject=Col·laboracio%20Escape%20Room%20Ferrer%20i%20Mora" class="btn-contact">
+                PROPOSAR COL·LABORACIÓ <i class="fas fa-paper-plane" style="margin-left:5px; font-size:0.9rem;"></i>
+            </a>
+        </aside>
+    </main>
+
+    <div class="support-logos">
+        <img src="https://molinsderei.cat/wp-content/uploads/2022/11/Logotipajuntamentprojectes-768x253.png" alt="Amb el suport de l'Ajuntament de Molins de Rei">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 El Rusc - Associació Juvenil</p>
+    </footer>
+
+</body>
+</html>
