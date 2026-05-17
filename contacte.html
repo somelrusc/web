@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacte | El Rusc</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --mel: #EDBF7C;
+            --mel-light: #f7e3c5;
+            --terracota: #BF6E65;
+            --fons: #fffcf9;
+            --text: #333333;
+            --obscur: #2c3e50;
+            --smooth: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--fons);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+        .logo { font-weight: 700; color: var(--terracota); text-decoration: none; font-size: 1.5rem; letter-spacing: 1px; }
+
+        /* --- HERO --- */
+        .contact-header {
+            padding: 140px 8% 40px;
+            background: white;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .contact-header h1 { font-size: 3rem; color: var(--text); margin-bottom: 10px; font-weight: 700; }
+        .contact-header p { font-size: 1.2rem; color: #666; font-weight: 500; }
+
+        /* --- CONTENIDOR PRINCIPAL --- */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        /* --- COLUMNA INFO --- */
+        .info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        .info-col h2 { font-size: 1.8rem; color: var(--obscur); }
+        .info-col .intro-text { color: #666; font-size: 1.05rem; }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .method-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--smooth);
+        }
+        .method-item:hover {
+            border-color: var(--mel);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+        }
+        .method-item i {
+            font-size: 1.5rem;
+            color: var(--terracota);
+            background: #fff5f4;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .method-text h4 { font-size: 0.85rem; color: #999; text-transform: uppercase; letter-spacing: 0.5px; }
+        .method-text p { font-size: 1.05rem; font-weight: 600; }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--obscur);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--smooth);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .social-btn:hover {
+            background: var(--terracota);
+            color: white;
+            border-color: var(--terracota);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(191, 110, 101, 0.2);
+        }
+
+        /* --- COLUMNA FORMULARI --- */
+        .form-col {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.02);
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 20px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            background: var(--fons);
+            border: 1px solid #e8e8e8;
+            border-radius: 14px;
+            color: var(--text);
+            transition: var(--smooth);
+            outline: none;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--mel);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(237, 191, 124, 0.15);
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--terracota);
+            color: white;
+            border: none;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--smooth);
+            box-shadow: 0 5px 15px rgba(191, 110, 101, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background: var(--obscur);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: white;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container { grid-template-columns: 1fr; gap: 40px; }
+            .form-col { padding: 30px 20px; }
+            .contact-header h1 { font-size: 2.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">EL RUSC</a>
+        <a href="index.html" style="text-decoration:none; color:var(--text); font-weight:700;">
+            <i class="fas fa-chevron-left"></i> INICI
+        </a>
+    </nav>
+
+    <header class="contact-header">
+        <h1>Parlem?</h1>
+        <p>Tens alguna proposta, dubte o vols muntar alguna activitat amb nosaltres? Escriu-nos!</p>
+    </header>
+
+    <main class="contact-container">
+        
+        <section class="info-col">
+            <h2>Contacte directe</h2>
+            <p class="intro-text">Som una associació juvenil oberta a col·laborar amb entitats, agrupacions, centres educatius o col·lectius de la vila i de la comarca.</p>
+            
+            <div class="contact-methods">
+                <a href="mailto:somelrusc@gmail.com" class="method-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="method-text">
+                        <h4>Correu Electrònic</h4>
+                        <p>somelrusc@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+
+            <div>
+                <h3 style="font-size: 1.1rem; margin-bottom: 15px; font-weight: 700;">A les xarxes</h3>
+                <div class="social-links">
+                    <a href="https://instagram.com/somelrusc" class="social-btn" target="_blank">
+                        <i class="fab fa-instagram" style="color: #E1306C; font-size: 1.2rem;"></i> @somelrusc
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-col">
+            <form id="ruscContactForm">
+                <div class="form-group">
+                    <label for="name">Com te dius?</label>
+                    <input type="text" id="name" placeholder="El teu nom o entitat" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">El teu correu electrònic</label>
+                    <input type="email" id="email" placeholder="nom@exemple.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Assumpte / Motiu</label>
+                    <input type="text" id="subject" placeholder="Ex: Proposta Molinspoly, Dubte Escape Room..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Què ens vols explicar?</label>
+                    <textarea id="message" rows="5" placeholder="Escriu els detalls aquí..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    OBRIR CORREU <i class="fas fa-envelope-open-text" style="font-size: 0.9rem;"></i>
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 El Rusc - Associació Juvenil</p>
+    </footer>
+
+    <script>
+        document.getElementById('ruscContactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la pàgina es recarregui
+            
+            // Agafem les dades introduïdes pels usuaris
+            const nom = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const assumpte = document.getElementById('subject').value;
+            const missatge = document.getElementById('message').value;
+            
+            // El mail de l'associació
+            const emailDesti = "somelrusc@gmail.com";
+            
+            // Preparem l'assumpte del correu de sortida
+            const mailSubject = encodeURIComponent(`[Web El Rusc] ${assumpte}`);
+            
+            // Construïm un cos de missatge ben estructurat i net
+            let mailBody = `Hola equip del Rusc,\n\n`;
+            mailBody += `Us escric un missatge a través del formulari de la web:\n`;
+            mailBody += `--------------------------------------------------\n`;
+            mailBody += `Nom: ${nom}\n`;
+            mailBody += `Correu de contacte: ${email}\n`;
+            mailBody += `--------------------------------------------------\n\n`;
+            mailBody += `Missatge:\n${missatge}\n\n`;
+            mailBody += `--------------------------------------------------`;
+            
+            const mailBodyEncoded = encodeURIComponent(mailBody);
+            
+            // Generem i obrim el mailto dinàmic de manera nativa
+            window.location.href = `mailto:${emailDesti}?subject=${mailSubject}&body=${mailBodyEncoded}`;
+        });
+    </script>
+
+</body>
+</html>
