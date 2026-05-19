@@ -135,27 +135,77 @@
         }
         .icon-item i { font-size: 1.1rem; color: var(--mel); }
 
-        /* --- AGENDA --- */
-        .agenda-box {
-            padding: 80px 40px;
-            border: 2px dashed #eee;
-            border-radius: 30px;
-            text-align: center;
+        /* --- AGENDA (SISTEMA DINÀMIC I AMPLIABLE) --- */
+        .agenda-list {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 20px;
         }
 
-        .agenda-box i { 
-            font-size: 3.5rem; 
-            color: var(--mel); 
-            animation: beeMove 3s ease-in-out infinite;
+        .agenda-item {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.01);
+            transition: var(--smooth);
         }
 
-        @keyframes beeMove {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
+        .agenda-item:hover {
+            border-color: var(--mel);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transform: scale(1.005);
+        }
+
+        .agenda-date {
+            background: var(--mel-light);
+            color: #7a5822;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            min-width: 90px;
+            font-weight: 700;
+        }
+
+        .agenda-date .day { font-size: 1.8rem; display: block; line-height: 1; }
+        .agenda-date .month { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .agenda-info { flex-grow: 1; }
+        .agenda-info h3 { font-size: 1.3rem; color: var(--text); margin-bottom: 4px; font-weight: 700; }
+        .agenda-info p { font-size: 0.95rem; color: #666; }
+        .agenda-info .tags { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .agenda-info .tag { background: #f5f5f5; font-size: 0.75rem; padding: 4px 10px; border-radius: 50px; color: #777; font-weight: 500; }
+
+        /* Botons de Calendari Dropdown / Accions */
+        .calendar-actions {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-calendar {
+            background: var(--terracota);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--smooth);
+            text-decoration: none;
+        }
+
+        .btn-calendar:hover {
+            background: var(--terracota-dark);
+            box-shadow: 0 5px 15px rgba(191, 110, 101, 0.3);
         }
 
         /* --- FOOTER --- */
@@ -170,6 +220,11 @@
 
         @media (max-width: 768px) {
             .project-grid { grid-template-columns: 1fr; }
+            .agenda-item { flex-direction: column; text-align: center; align-items: center; padding: 20px; }
+            .agenda-date { width: 100%; max-width: 120px; }
+            .calendar-actions { width: 100%; }
+            .btn-calendar { justify-content: center; width: 100%; }
+            .agenda-info .tags { justify-content: center; }
         }
     </style>
 </head>
@@ -200,7 +255,7 @@
                 </div>
                 <div class="card-body">
                     <h3>Els Misteris de la Fàbrica Ferrer i Mora</h3>
-                    <p>Un escape room històric per descobrir el patrimoni industrial de Molins de Rei a través d'enigmes i ació.</p>
+                    <p>Un escape room històric per descobrir el patrimoni industrial de Molins de Rei a través d'enigmes i acció.</p>
                     <div class="card-icons">
                         <div class="icon-item"><i class="fas fa-users"></i><span>2-6 Jugadors</span></div>
                         <div class="icon-item"><i class="fas fa-clock"></i><span>60 Minuts</span></div>
@@ -242,13 +297,43 @@
 
         <div class="section-header">
             <i class="fas fa-calendar-alt" style="color: var(--mel); font-size: 1.5rem;"></i>
-            <h2>Properes Dates</h2>
+            <h2>Propers Esdveniments</h2>
         </div>
 
-        <div class="agenda-box">
-            <i class="fas fa-bee"></i>
-            <p style="font-weight: 600; color: #888;">Estem preparant la propera temporada.<br>Segueix-nos per no perdre't res.</p>
-        </div>
+        <div class="agenda-list">
+            
+            <div class="agenda-item">
+                <div class="agenda-date">
+                    <span class="day">31</span>
+                    <span class="month">Oct</span>
+                </div>
+                <div class="agenda-info">
+                    <h3>Terror Les Conserves</h3>
+                    <p>Properament més info. Estigueu atents per no perdre-us cap detall!</p>
+                    <p>@terrorlesconserves | https://bit.ly/terrorlesconserves</p>
+
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> AVV Les Guardioles</span>
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
+                <div class="calendar-actions">
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Terror+Les+Conserves+-+El+Rusc&dates=20261031T180000Z/20261031T230000Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles+i+l%27Ajuntament+de+Molins+de+Rei.+Properament+m%C3%A9s+info!&location=Les+Guardioles,+Molins+de+Rei" 
+                       target="_blank" 
+                       class="btn-calendar">
+                        <i class="far fa-calendar-plus"></i> Afegir al calendari
+                    </a>
+                </div>
+                <div class="calendar-actions">
+                    <a href="https://pbf801.wixsite.com/terrorlesconserves" 
+                       target="_blank" 
+                       class="btn-calendar">
+                       <i class="fa-solid fa-circle-info"></i> Més Informació
+                    </a>
+                </div>
+            </div>
+
+            </div>
 
     </main>
 
