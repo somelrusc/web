@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Stripe Buy Button Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
     <style>
         /* --- VARIABLES DE MARCA --- */
         :root {
@@ -208,6 +211,12 @@
             transform: translateX(10px);
         }
 
+        /* Contenidor adaptat per al botó de Stripe */
+        .stripe-container {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
         /* Imatges PRO */
         .preview-image {
             flex: 1;
@@ -311,6 +320,7 @@
             <li><a href="#audiovisuals">Audiovisuals</a></li>
             <li><a href="#activitats">Activitats</a></li>
             <li><a href="#digital">Digital</a></li>
+            <li><a href="#donacions">Donacions</a></li>
             <li><a href="contacte.html">Contacte</a></li>
         </ul>
 
@@ -365,6 +375,26 @@
         </div>
         <div class="preview-image reveal">
             <div class="image-placeholder"><i class="fas fa-network-wired"></i></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓ DE DONACIONS INTEGRADA -->
+    <section class="section-preview" id="donacions">
+        <div class="preview-content reveal">
+            <span class="preview-tag">Col·labora</span>
+            <h2>Fes créixer el projecte.</h2>
+            <p>La teva aportació ens ajuda a mantenir les nostres activitats, projectes audiovisuals i el suport al teixit associatiu. Cada ajuda compta!</p>
+            <div class="stripe-container">
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1U66RM2Kc8clKi5XBCXflZEk"
+                    publishable-key="pk_live_51TU7qa2Kc8clKi5XbKoxMZLxLle8DO9m0WJPsXATF7281LPFObkmHdzMZvrjBExjiIwmE5AToqeqr3zvr7VPgu8q00XpbjGXRo">
+                </stripe-buy-button>
+            </div>
+        </div>
+        <div class="preview-image reveal">
+            <div class="image-placeholder" style="background: linear-gradient(135deg, #fffcf9 0%, #EDBF7C 100%);">
+                <i class="fas fa-heart" style="color: white;"></i>
+            </div>
         </div>
     </section>
 
