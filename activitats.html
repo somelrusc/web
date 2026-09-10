@@ -173,12 +173,14 @@
 
         .agenda-date .day { font-size: 1.8rem; display: block; line-height: 1; }
         .agenda-date .month { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .agenda-date .year { font-size: 0.75rem; opacity: 0.8; display: block; margin-top: 2px; }
 
         .agenda-info { flex-grow: 1; }
         .agenda-info h3 { font-size: 1.3rem; color: var(--text); margin-bottom: 4px; font-weight: 700; }
         .agenda-info p { font-size: 0.95rem; color: #666; }
         .agenda-info .tags { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
         .agenda-info .tag { background: #f5f5f5; font-size: 0.75rem; padding: 4px 10px; border-radius: 50px; color: #777; font-weight: 500; }
+        .agenda-info .tag.canceled { background: #fee2e2; color: #b91c1c; }
 
         /* Botons de Calendari Dropdown / Accions */
         .calendar-actions {
@@ -279,6 +281,21 @@
                 </div>
             </a>
 
+            <a href="#" class="project-card">
+                <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/7dgMSNQJ/Gemini-Generated-Image.png');">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="card-body">
+                    <h3>Tarot: Escape Room</h3> 
+                    <p>Una experiència immersiva plena de misteri, endevinació, enigmes i terror. Arriba el gener del 2027.</p>
+                    <div class="card-icons">
+                        <div class="icon-item"><i class="fas fa-users"></i><span>Properament</span></div>
+                        <div class="icon-item"><i class="fas fa-clock"></i><span>Properament</span></div>
+                        <div class="icon-item"><i class="fas fa-ghost"></i><span>Terror</span></div>
+                    </div>
+                </div>
+            </a>
+
             <a href="mailto:somelrusc@gmail.com" class="project-card">
                 <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000&auto=format&fit=crop');">
                     <i class="fas fa-wand-magic-sparkles"></i>
@@ -297,102 +314,138 @@
 
         <div class="section-header">
             <i class="fas fa-calendar-alt" style="color: var(--mel); font-size: 1.5rem;"></i>
-            <h2>Propers Esdveniments</h2>
+            <h2>Propers Esdeveniments</h2>
         </div>
 
         <div class="agenda-list">
             
             <div class="agenda-item">
                 <div class="agenda-date">
-                    <span class="day">04</span>
-                    <span class="month">Jul</span>
-                </div>
-                <div class="agenda-info">
-                    <h3>Molinspoly</h3>
-                    <p>El Molinspoly surt al carrer durant la festa de germanor de l'AVV Les Guardioles</p>
-                    <p>Reserva només per a socis de l'AVV. No socis sense reserva<p>
-
-                    <div class="tags">
-                        <span class="tag"><i class="fas fa-handshake"></i> AVV Les Guardioles</span> </div>
-                    </div>
-                <div class="calendar-actions">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Molinspoly+-+El+Rusc+-+AVV+Guardioles&dates=20260704T180000Z/20260704T230000Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles&location=Les+Guardioles,+Molins+de+Rei" 
-                       target="_blank" 
-                       class="btn-calendar">
-                        <i class="far fa-calendar-plus"></i> Afegir al calendari
-                    </a>
-                </div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-date">
-                    <span class="day">¿?</span>
-                    <span class="month">Jul</span>
-                </div>
-                <div class="agenda-info">
-                    <h3>Properament</h3>
-                    <p>Properament més info. Estigueu atents per no perdre-us cap detall!</p>
-                    <p>⌘⌂₪⌂⌘⌘⌂₪⌂⌘<p>
-
-                    <div class="tags">
-                        <span class="tag"><i class="fas fa-handshake"></i> ?¿?¿?</span>
-                    </div>
-                </div>
-                <div class="calendar-actions">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Activitat+-+El+Rusc&dates=20260701T000000Z/20260731T235900Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles+i+l%27Ajuntament+de+Molins+de+Rei.+Properament+m%C3%A9s+info!&location=Les+Guardioles,+Molins+de+Rei" 
-                       target="_blank" 
-                       class="btn-calendar">
-                        <i class="far fa-calendar-plus"></i> Afegir al calendari
-                    </a>
-                </div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-date">
-                    <span class="day">¿?</span>
-                    <span class="month">Jul</span>
-                </div>
-                <div class="agenda-info">
-                    <h3>Properament</h3>
-                    <p>Properament més info. Estigueu atents per no perdre-us cap detall!</p>
-                    <p>⌁⚙⌁⚙⌁⌬⛓⌬⛓⌬</p>
-
-                    <div class="tags">
-                        <span class="tag"><i class="fas fa-handshake"></i> ?¿?¿?</span>
-                    </div>
-                </div>
-                <div class="calendar-actions">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Activitat+-+El+Rusc&dates=20260701T000000Z/20260731T235900Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles+i+l%27Ajuntament+de+Molins+de+Rei.+Properament+m%C3%A9s+info!&location=Les+Guardioles,+Molins+de+Rei" 
-                       target="_blank" 
-                       class="btn-calendar">
-                        <i class="far fa-calendar-plus"></i> Afegir al calendari
-                    </a>
-                </div>
-            </div>
-            <div class="agenda-item">
-                <div class="agenda-date">
-                    <span class="day">¿?</span>
+                    <span class="day">31</span>
                     <span class="month">Oct</span>
+                    <span class="year">2026</span>
                 </div>
                 <div class="agenda-info">
-                    <h3>Properament</h3>
+                    <h3>Terror Les Conserves</h3>
                     <p>Properament més info. Estigueu atents per no perdre-us cap detall!</p>
                     <p>☾❦♱⋆∞⸸∞⟡</p>
-
                     <div class="tags">
                         <span class="tag"><i class="fas fa-handshake"></i> AVV Les Guardioles</span>
                         <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
                     </div>
                 </div>
                 <div class="calendar-actions">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Activitat+-+El+Rusc&dates=20261001T000000Z/20261031T235900Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles+i+l%27Ajuntament+de+Molins+de+Rei.+Properament+m%C3%A9s+info!&location=Les+Guardioles,+Molins+de+Rei" 
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Terror+Les+Conserves+-+El+Rusc&dates=20261031T180000Z/20261031T235900Z&details=Activitat+organitzada+per+El+Rusc+-+Associaci%C3%B3+Juvenil+en+conveni+amb+l%27AVV+Les+Guardioles+i+l%27Ajuntament+de+Molins+de+Rei.+Properament+m%C3%A9s+info!&location=Les+Guardioles,+Molins+de+Rei" 
                        target="_blank" 
                        class="btn-calendar">
                         <i class="far fa-calendar-plus"></i> Afegir al calendari
                     </a>
                 </div>
             </div>
-            
 
+        </div>
+
+        <div class="section-header" style="margin-top: 50px;">
+            <i class="fas fa-history" style="color: #999; font-size: 1.5rem;"></i>
+            <h2>Esdeveniments Passats</h2>
+        </div>
+
+        <div class="agenda-list">
+
+            <!-- 2026 -->
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day">20</span>
+                    <span class="month">Jul</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #555;">Els Misteris de la Fàbrica Ferrer i Mora</h3>
+                    <p>Sessió especial "Estiu Jove 2026"</p>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
             </div>
+
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day">09</span>
+                    <span class="month">Jul</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #555;">Molinspoly</h3>
+                    <p>Sessió especial "Estiu Jove 2026"</p>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day" style="font-size: 1.3rem;">27-09</span>
+                    <span class="month">Mar-Mai</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #555;">Els Misteris de la Fàbrica Ferrer i Mora</h3>
+                    <p>Re-Edició l'escape room a una nova ubicació, amb moltes més dates i nous elements.</p>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> AVV Les Guardioles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day">24</span>
+                    <span class="month">Oct</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #555;">Els Misteris de la Fàbrica Ferrer i Mora</h3>
+                    <p>Primera Edició de l'escape room a la Federació Obrera</p>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day">12</span>
+                    <span class="month">Jul</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #777;">Molinspoly</h3>
+                    <p>Sessió no realitzada per causes meteorològiques.</p>
+                    <div class="tags">
+                        <span class="tag canceled"><i class="fas fa-ban"></i> Cancel·lat</span>
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-date" style="background: #f5f5f5; color: #888;">
+                    <span class="day">11</span>
+                    <span class="month">Jul</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="agenda-info">
+                    <h3 style="color: #555;">Molinspoly</h3>
+                    <p>Primera edició del gran joc de taula de Molins de Rei</p>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-handshake"></i> Ajuntament de Molins de Rei</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </main>
 
