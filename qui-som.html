@@ -1,0 +1,1350 @@
+```html
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Rusc | Qui som</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES DE MARCA --- */
+        :root {
+            --mel: #EDBF7C;
+            --mel-light: #f7e3c5;
+            --terracota: #BF6E65;
+            --terracota-dark: #a15951;
+            --blanc: #ffffff;
+            --fons: #fffcf9;
+            --text: #333333;
+            --smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--fons);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* --- NAVEGACIÓ --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--smooth);
+        }
+
+        nav.scrolled {
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--terracota);
+            text-decoration: none;
+            letter-spacing: 2px;
+            z-index: 1100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracota);
+        }
+
+        .menu-btn {
+            display: none;
+            color: var(--terracota);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+            transition: var(--smooth);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 140px 20px 100px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 75% 25%, var(--mel-light) 0%, transparent 38%),
+                radial-gradient(circle at 15% 75%, #fde7e4 0%, transparent 40%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 950px;
+        }
+
+        .hero-tag {
+            color: var(--terracota);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 11vw, 8rem);
+            font-weight: 700;
+            color: var(--terracota);
+            line-height: 0.9;
+            margin-bottom: 30px;
+            animation: heroFade 1s ease-out forwards;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 4vw, 2.6rem);
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .hero-description {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .blob {
+            position: absolute;
+            background: var(--mel);
+            filter: blur(60px);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0.2;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 50px); }
+        }
+
+        @keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* --- INTRO --- */
+        .intro {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .intro-label {
+            color: var(--mel);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .intro h2 {
+            color: var(--terracota);
+            font-size: clamp(2.3rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-top: 15px;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .intro-text strong {
+            color: var(--terracota-dark);
+        }
+
+        /* --- TIMELINE --- */
+        .timeline-section {
+            background: white;
+            padding: 110px 8%;
+        }
+
+        .section-heading {
+            max-width: 900px;
+            margin: 0 auto 70px;
+            text-align: center;
+        }
+
+        .section-heading span {
+            color: var(--mel);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .section-heading h2 {
+            color: var(--terracota);
+            font-size: clamp(2.3rem, 5vw, 3.8rem);
+            line-height: 1.1;
+            margin: 15px 0 20px;
+        }
+
+        .section-heading p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--mel-light);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 0 50px 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--terracota);
+            border: 4px solid var(--mel-light);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            color: var(--terracota);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #666;
+        }
+
+        .timeline-item.future .timeline-dot {
+            background: var(--mel);
+        }
+
+        .timeline-item.future .timeline-year {
+            color: var(--mel);
+        }
+
+        /* --- QUÈ FEM --- */
+        .work-section {
+            padding: 110px 8%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .work-card {
+            padding: 45px;
+            border-radius: 35px;
+            background: white;
+            transition: var(--smooth);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.07);
+        }
+
+        .work-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--mel-light);
+            color: var(--terracota);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .work-card:nth-child(2) .work-icon {
+            background: #fde7e4;
+        }
+
+        .work-card:nth-child(3) .work-icon {
+            background: #f7e3c5;
+        }
+
+        .work-card:nth-child(4) .work-icon {
+            background: #f4d9d5;
+        }
+
+        .work-card h3 {
+            color: var(--terracota);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .work-card p {
+            color: #666;
+        }
+
+        /* --- COL·LABORACIONS --- */
+        .collab-section {
+            padding: 110px 8%;
+            background: linear-gradient(135deg, #fffcf9 0%, var(--mel-light) 100%);
+        }
+
+        .collab-content {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .collab-content > p {
+            max-width: 850px;
+            margin: 0 auto 50px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .collab-box {
+            background: rgba(255,255,255,0.75);
+            padding: 30px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .collab-box i {
+            color: var(--terracota);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .collab-box h3 {
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        .collab-box p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* --- MANIFEST --- */
+        .manifest {
+            padding: 120px 8%;
+            background: var(--terracota);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifest::before {
+            content: 'EL RUSC';
+            position: absolute;
+            font-size: 20vw;
+            font-weight: 700;
+            opacity: 0.05;
+            white-space: nowrap;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .manifest-content {
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .manifest h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .manifest p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 8% 40px;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            color: var(--mel);
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #999;
+        }
+
+        .footer-links h4 {
+            color: var(--mel);
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* --- REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+
+            nav {
+                padding: 20px 5%;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--blanc);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.8rem;
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding: 70px 5%;
+                text-align: center;
+            }
+
+            .timeline-section {
+                padding: 80px 5%;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even),
+            .timeline-item:nth-child(odd) {
+                width: 100%;
+                margin-left: 0;
+                padding: 0 0 50px 45px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 2px;
+                right: auto;
+            }
+
+            .work-section {
+                padding: 80px 5%;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collab-section {
+                padding: 80px 5%;
+            }
+
+            .collab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .manifest {
+                padding: 90px 5%;
+            }
+
+            footer {
+                padding: 70px 5% 35px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero {
+                min-height: 75vh;
+                padding: 130px 20px 80px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .work-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓ -->
+    <nav id="navbar">
+
+        <a href="index.html" class="logo">EL RUSC</a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Inici</a></li>
+            <li><a href="qui-som.html" class="active">Qui som</a></li>
+            <li><a href="audiovisuals.html">Audiovisuals</a></li>
+            <li><a href="activitats.html">Activitats</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="contacte.html">Contacte</a></li>
+        </ul>
+
+        <div class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="blob"
+             style="width: 40vw; height: 40vw; top: -10%; right: -10%;">
+        </div>
+
+        <div class="blob"
+             style="width: 30vw; height: 30vw; bottom: 5%; left: -5%; background: var(--terracota);">
+        </div>
+
+        <div class="hero-content">
+
+            <span class="hero-tag">Associació Juvenil</span>
+
+            <h1>QUI SOM</h1>
+
+            <h2>Una associació petita, però amb moltes ganes de fer xarxa.</h2>
+
+            <p class="hero-description">
+                El Rusc és un projecte juvenil nascut a Molins de Rei amb una idea molt senzilla:
+                crear, impulsar i donar vida a projectes que aportin valor al nostre entorn.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTRODUCCIÓ -->
+    <section class="intro">
+
+        <div class="reveal">
+
+            <span class="intro-label">El nostre origen</span>
+
+            <h2>
+                Fa poc que tenim nom oficial.
+                Però ja fa anys que fem coses.
+            </h2>
+
+        </div>
+
+        <div class="intro-text reveal">
+
+            <p>
+                L’<strong>Associació Juvenil El Rusc</strong> es va constituir oficialment
+                el <strong>març de 2026</strong>, però el projecte ve de molt abans.
+            </p>
+
+            <p>
+                Des de l’any <strong>2021</strong> ja desenvolupàvem projectes,
+                especialment en l’àmbit audiovisual, amb programes de ràdio i continguts
+                creats i produïts per joves.
+            </p>
+
+            <p>
+                Amb els anys, aquella iniciativa va anar evolucionant i incorporant
+                noves idees: activitats pròpies, oci alternatiu, projectes culturals,
+                tecnologia, digitalització i participació comunitària.
+            </p>
+
+            <p>
+                El Rusc neix formalment per donar estructura a tot aquest projecte
+                i continuar desenvolupant iniciatives que connectin el jovent,
+                les entitats i el conjunt de la comunitat.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+
+        <div class="section-heading reveal">
+
+            <span>El nostre camí</span>
+
+            <h2>
+                D’una idea a una xarxa.
+            </h2>
+
+            <p>
+                Una història que comença amb una ràdio i que continua creixent
+                a través de projectes, activitats i persones.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <!-- 2021 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    2021
+                </div>
+
+                <h3>
+                    Comença la ràdio
+                </h3>
+
+                <p>
+                    Neix el projecte audiovisual i radiofònic que dona origen
+                    a El Rusc. Comencem a crear programes propis i a donar
+                    veu al jovent des de Molins de Rei.
+                </p>
+
+            </div>
+
+
+            <!-- 2022-2024 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    2022–2024
+                </div>
+
+                <h3>
+                    El projecte es consolida
+                </h3>
+
+                <p>
+                    El projecte creix, es consolida i amplia les seves línies
+                    de treball. L’activitat audiovisual es combina amb noves
+                    propostes i iniciatives pròpies.
+                </p>
+
+            </div>
+
+
+            <!-- 2025 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    2025
+                </div>
+
+                <h3>
+                    Molinspoly i Els Misteris de la Fàbrica Ferrer i Mora
+                </h3>
+
+                <p>
+                    Creem i desenvolupem noves activitats d’oci alternatiu,
+                    entre elles <strong>Molinspoly</strong> i
+                    <strong>Els Misteris de la Fàbrica Ferrer i Mora</strong>.
+                    Projectes creats des de zero amb una idea clara:
+                    oferir experiències diferents, accessibles i pensades
+                    per a tothom.
+                </p>
+
+            </div>
+
+
+            <!-- 2026 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    2026
+                </div>
+
+                <h3>
+                    El Rusc es constitueix oficialment
+                </h3>
+
+                <p>
+                    El març de 2026 formalitzem l’associació i donem estructura
+                    al projecte, agrupant sota un mateix nom les diferents
+                    iniciatives que havíem anat desenvolupant.
+                </p>
+
+            </div>
+
+
+            <!-- FUTUR 2026 -->
+
+            <div class="timeline-item reveal future">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    2026 · PRÒXIMAMENT
+                </div>
+
+                <h3>
+                    Nous misteris ens esperen
+                </h3>
+
+                <p>
+                    Aquest any continuem ampliant el projecte amb noves
+                    experiències, entre elles un
+                    <strong>Passatge del Terror</strong> i un nou
+                    <strong>Escape Room de Tarot</strong>.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUÈ FEM -->
+    <section class="work-section">
+
+        <div class="section-heading reveal">
+
+            <span>Què fem</span>
+
+            <h2>
+                Projectes diferents, una mateixa manera de fer.
+            </h2>
+
+            <p>
+                No ens tanquem en una única activitat. Ens interessa detectar
+                oportunitats, imaginar propostes i convertir-les en realitat.
+            </p>
+
+        </div>
+
+
+        <div class="work-grid">
+
+
+            <!-- AUDIOVISUALS -->
+
+            <div class="work-card reveal">
+
+                <div class="work-icon">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+
+                <h3>
+                    Audiovisuals i comunicació
+                </h3>
+
+                <p>
+                    Creem programes de ràdio, continguts audiovisuals i formats
+                    interactius. Utilitzem la comunicació com una eina per donar
+                    veu al jovent, compartir inquietuds i generar comunitat.
+                </p>
+
+            </div>
+
+
+            <!-- OCI -->
+
+            <div class="work-card reveal">
+
+                <div class="work-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+
+                <h3>
+                    Oci alternatiu i accessible
+                </h3>
+
+                <p>
+                    Apostem per un oci que surti del que és habitual. Creem
+                    activitats i experiències que no són fàcils de trobar
+                    al nostre entorn i que, quan existeixen, sovint tenen
+                    un cost poc accessible.
+                </p>
+
+                <p style="margin-top: 15px;">
+                    Per això les apropem a tothom amb
+                    <strong>activitats gratuïtes o a preus simbòlics</strong>,
+                    perquè el cost no sigui una barrera per participar,
+                    divertir-se i formar part de la comunitat.
+                </p>
+
+            </div>
+
+
+            <!-- DIGITAL -->
+
+            <div class="work-card reveal">
+
+                <div class="work-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+
+                <h3>
+                    Digitalització
+                </h3>
+
+                <p>
+                    Posem els nostres coneixements tecnològics al servei del
+                    teixit associatiu. Acompanyem entitats en processos de
+                    digitalització i desenvolupem eines que els ajudin a
+                    comunicar-se, organitzar-se i donar visibilitat als seus
+                    projectes.
+                </p>
+
+            </div>
+
+
+            <!-- COMUNITAT -->
+
+            <div class="work-card reveal">
+
+                <div class="work-icon">
+                    <i class="fas fa-people-arrows"></i>
+                </div>
+
+                <h3>
+                    Participació i comunitat
+                </h3>
+
+                <p>
+                    Creem espais de participació juvenil i comunitària,
+                    col·laborant amb entitats i administracions per apropar
+                    activitats, recursos i oportunitats a diferents
+                    col·lectius del municipi.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COL·LABORACIONS -->
+    <section class="collab-section">
+
+        <div class="collab-content">
+
+            <div class="section-heading reveal">
+
+                <span>Fem xarxa</span>
+
+                <h2>
+                    Treballar sols no és la nostra manera de fer.
+                </h2>
+
+                <p>
+                    Una part important d’El Rusc és la capacitat de col·laborar
+                    amb persones, entitats i administracions. Al llarg del
+                    projecte hem participat en iniciatives molt diverses
+                    i des de diferents àmbits.
+                </p>
+
+            </div>
+
+
+            <div class="collab-grid">
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-landmark"></i>
+
+                    <h3>
+                        Ajuntament de Molins de Rei
+                    </h3>
+
+                    <p>
+                        Hem col·laborat amb diferents regidories i àrees de
+                        l’Ajuntament en activitats, projectes i iniciatives
+                        de caràcter juvenil, cultural i comunitari.
+                    </p>
+
+                </div>
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-user-friends"></i>
+
+                    <h3>
+                        Joventut i inclusió
+                    </h3>
+
+                    <p>
+                        Hem treballat conjuntament per apropar activitats
+                        a joves i facilitar la participació de persones en
+                        situació o risc d’exclusió social.
+                    </p>
+
+                </div>
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-handshake"></i>
+
+                    <h3>
+                        Entitats del municipi
+                    </h3>
+
+                    <p>
+                        Col·laborem amb el teixit associatiu local, compartint
+                        recursos, coneixements i capacitats per ajudar a fer
+                        créixer projectes comunitaris.
+                    </p>
+
+                </div>
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-home"></i>
+
+                    <h3>
+                        AVV Les Guardioles
+                    </h3>
+
+                    <p>
+                        També hem col·laborat amb l’Associació de Veïns i
+                        Veïnes Les Guardioles en diferents iniciatives
+                        vinculades al barri i a la participació comunitària.
+                    </p>
+
+                </div>
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-calendar-check"></i>
+
+                    <h3>
+                        Activitats municipals
+                    </h3>
+
+                    <p>
+                        Hem participat en iniciatives vinculades a la vida
+                        del municipi, desenvolupant formats interactius,
+                        continguts i propostes per a esdeveniments com
+                        la Festa Major.
+                    </p>
+
+                </div>
+
+
+                <div class="collab-box reveal">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    <h3>
+                        Projectes i convenis
+                    </h3>
+
+                    <p>
+                        La nostra activitat també s’ha articulat mitjançant
+                        col·laboracions i convenis per desenvolupar activitats
+                        i projectes d’interès juvenil i comunitari.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MANIFEST -->
+    <section class="manifest">
+
+        <div class="manifest-content reveal">
+
+            <h2>
+                Tenim poc.<br>
+                Fem molt.
+            </h2>
+
+            <p>
+                Som una associació jove i encara petita, però això no ens ha
+                impedit posar en marxa projectes molt diferents entre si.
+                Fem ràdio, creem activitats, desenvolupem eines digitals,
+                col·laborem amb entitats, treballem amb l’Ajuntament i
+                busquem constantment noves maneres de generar participació
+                i comunitat.
+            </p>
+
+            <p style="margin-top: 25px;">
+                Per nosaltres, <strong>El Rusc és sobretot una manera de fer:</strong>
+                detectar una idea, trobar persones amb ganes de tirar-la
+                endavant i convertir-la en alguna cosa que pugui aportar
+                al nostre entorn.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-logo">
+
+                <h3>EL RUSC</h3>
+
+                <p>
+                    Un espai on les idees volen i la xarxa creix.
+                    Uneix-te a l’eixam!
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Explora</h4>
+
+                <ul>
+                    <li><a href="index.html">Inici</a></li>
+                    <li><a href="qui-som.html">Qui som</a></li>
+                    <li><a href="audiovisuals.html">Audiovisuals</a></li>
+                    <li><a href="activitats.html">Activitats</a></li>
+                    <li><a href="digital.html">Digital</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Altres</h4>
+
+                <ul>
+                    <li>
+                        <a href="https://somelrusc.github.io/web/legal/avis">
+                            Avís Legal
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://somelrusc.github.io/web/legal/privacitat">
+                            Política de Privacitat
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:somelrusc@gmail.com">
+                            Contacte
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Xarxes</h4>
+
+                <div style="
+                    display: flex;
+                    gap: 20px;
+                    font-size: 1.5rem;
+                    margin-top: 10px;
+                ">
+
+                    <a href="https://instagram.com/somelrusc">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div style="
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            font-size: 0.8rem;
+            color: #666;
+        ">
+
+            &copy; 2026 El Rusc.
+            Fet amb 🤎 des de Molins de Rei
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // --- MENÚ MOBILE ---
+
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const icon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+
+            navLinks.classList.toggle('active');
+
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+
+            document.body.style.overflow =
+                navLinks.classList.contains('active')
+                ? 'hidden'
+                : 'initial';
+
+        });
+
+
+        // --- TANCAR MENÚ ---
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+
+            link.addEventListener('click', () => {
+
+                navLinks.classList.remove('active');
+
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+
+                document.body.style.overflow = 'initial';
+
+            });
+
+        });
+
+
+        // --- NAVBAR SCROLL ---
+
+        window.addEventListener('scroll', () => {
+
+            const nav = document.getElementById('navbar');
+
+            if (window.scrollY > 80)
+                nav.classList.add('scrolled');
+            else
+                nav.classList.remove('scrolled');
+
+        });
+
+
+        // --- REVEAL ON SCROLL ---
+
+        function reveal() {
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach(el => {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100)
+                    el.classList.add("active");
+
+            });
+
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        reveal();
+
+    </script>
+
+</body>
+</html>
+```
